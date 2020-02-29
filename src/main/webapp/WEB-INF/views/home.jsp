@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-test
+
 </body>
 </html>

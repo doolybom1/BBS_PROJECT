@@ -29,8 +29,7 @@ public class BBsServiceImp implements BBsService {
 
 	@Override
 	public BBsVO findById(long b_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bbsDao.findById(b_id);
 	}
 
 	@Override
@@ -57,8 +56,8 @@ public class BBsServiceImp implements BBsService {
 
 	@Override
 	public int update(BBsVO bbsVO) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return bbsDao.update(bbsVO);
 	}
 
 	@Override

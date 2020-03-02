@@ -1,13 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}"/>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="co"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/views/include/include-head.jspf" %>
+<style>
+tr>th, tr>td{
+	text-align: center;
+}
+.dt{
+	width:250px;
+}
+.no,.wr{
+	width:100px;
+}
+</style>
+
 <script>
 	$(function() {
 		$(".btn-writer").click(function() {
@@ -21,11 +33,11 @@
 	
 	<section class="container-fluid">
 		<article>
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover table-bordered">
 				<tr>
-					<th>NO</th>				
-					<th>작성자</th>				
-					<th>일시</th>				
+					<th class="no">NO</th>				
+					<th class="wr">작성자</th>				
+					<th class="dt">일시</th>				
 					<th>제목</th>				
 				</tr>
 				<co:choose>
@@ -40,7 +52,7 @@
 								<td>${i.count}</td>
 								<td>${BBS.b_writer}</td>
 								<td>${BBS.b_date_time}</td>
-								<td>${BBS.b_subject}</td>
+								<td><a href="${rootPath}/bbs/detail?b_id=${BBS.b_id}">${BBS.b_subject}</a></td>
 							</tr>			
 						</co:forEach>
 					</co:otherwise>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dooly.bbs.domain.BBsVO;
 import com.dooly.bbs.service.BBsService;
@@ -38,6 +39,27 @@ public class BBsController {
 	public String insert(BBsVO bbsVO) {
 		
 		bbsService.insert(bbsVO);
+		return "redirect:/list";
+	}
+	
+	@RequestMapping(value = "/detail",method=RequestMethod.GET)
+	public String detail(@RequestParam("b_id") String b_id, Model model) {
+		BBsVO bbsVO = bbsService.findById(Long.valueOf(b_id));
+		model.addAttribute("BBS", bbsVO);
+		return "bbs_view";
+	}
+	
+	
+	@RequestMapping(value = "/update",method=RequestMethod.GET)
+	public String update(@RequestParam("b_id") String b_id, Model model) {
+		BBsVO bbsVO = bbsService.findById(Long.valueOf(b_id));
+		model.addAttribute("BBS", bbsVO);
+		return "bbs_write";
+	}
+
+	@RequestMapping(value = "/update",method=RequestMethod.POST)
+	public String update(BBsVO bbsVO) {
+		bbsService.update(bbsVO);
 		return "redirect:/list";
 	}
 }

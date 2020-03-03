@@ -24,7 +24,6 @@
 		)
  	</insert>
  
- 
  	<update id="update" parameterType="bbsVO">
  		UPDATE tbl_bbs SET
 			B_WRITER = #{b_writer,jdbcType=VARCHAR},

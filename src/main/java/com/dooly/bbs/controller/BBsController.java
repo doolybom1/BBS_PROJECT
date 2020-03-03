@@ -62,4 +62,12 @@ public class BBsController {
 		bbsService.update(bbsVO);
 		return "redirect:/list";
 	}
+	
+	
+	@RequestMapping(value = "/delete",method=RequestMethod.GET)
+	public String delete(@RequestParam("b_id") String b_id) {
+		bbsService.delete(Long.valueOf(b_id));
+		return "redirect:/list";
+	}
+	
 }

@@ -62,8 +62,8 @@ public class BBsServiceImp implements BBsService {
 
 	@Override
 	public int delete(long b_id) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return bbsDao.delete(b_id);
 	}
 
 }

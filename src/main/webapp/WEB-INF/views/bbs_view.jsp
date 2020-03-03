@@ -13,6 +13,8 @@ $(function(){
 		let txt = $(this).text()
 		if(txt == '수정'){
 			document.location.href = "${rootPath}/bbs/update?b_id=${BBS.b_id}"
+		}else if(txt ==  '삭제'){
+			document.location.href = "${rootPath}/bbs/delete?b_id=${BBS.b_id}"
 		}
 	})
 })

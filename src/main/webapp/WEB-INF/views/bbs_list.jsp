@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="co"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
+<co:set var="rootPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@ tr>th, tr>td{
 <script>
 	$(function() {
 		$(".btn-writer").click(function() {
-			document.location.href="${rootPath}/bbs/insert"
+			document.location.href="${rootPath}/insert"
 		})
 	})
 </script>
@@ -52,7 +52,7 @@ tr>th, tr>td{
 								<td>${i.count}</td>
 								<td>${BBS.b_writer}</td>
 								<td>${BBS.b_date_time}</td>
-								<td><a href="${rootPath}/bbs/detail?b_id=${BBS.b_id}">${BBS.b_subject}</a></td>
+								<td><a href="${rootPath}/detail?b_id=${BBS.b_id}">${BBS.b_subject}</a></td>
 							</tr>			
 						</co:forEach>
 					</co:otherwise>

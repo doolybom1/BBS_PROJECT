@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +11,11 @@ $(function(){
 	$(document).on("click","button",function(){
 		let txt = $(this).text()
 		if(txt == '수정'){
-			document.location.href = "${rootPath}/bbs/update?b_id=${BBS.b_id}"
+			document.location.href = "${rootPath}/update?b_id=${BBS.b_id}"
 		}else if(txt ==  '삭제'){
-			document.location.href = "${rootPath}/bbs/delete?b_id=${BBS.b_id}"
+			if(confirm("삭제하시겠습니까?")){
+				document.location.href = "${rootPath}/delete?b_id=${BBS.b_id}"				
+			}
 		}
 	})
 })
@@ -37,7 +38,7 @@ $(function(){
 		<button class="btn btn-outline-primary mr-2 p-2">수정</button>
 		<button class="btn btn-outline-danger mr-2 p-2">삭제</button>
 		<button class="btn btn-outline-success mr-2 p-2">답글</button>
-		<button class="btn btn-outline-dark p-2">목록으로</button>
+		<a href="${rootPath}/list"><button class="btn btn-outline-dark p-2">목록으로</button></a>
 	</div>
 	<section class="container-fluid p-3">
 		<div class="p-3">댓글을 남겨주세요</div>

@@ -31,7 +31,8 @@ public class BBsController {
 	}
 	
 	@RequestMapping(value = "/insert",method=RequestMethod.GET)
-	public String insert() {
+	public String insert(Model model) {
+		model.addAttribute("INSERT", "INSERT");
 		return "bbs_write";
 	}
 

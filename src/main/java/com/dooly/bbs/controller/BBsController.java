@@ -77,6 +77,8 @@ public class BBsController {
 	@ResponseBody
 	@RequestMapping(value = "/image_up",method=RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	public String fileUp(MultipartFile upFile) {
+		
+		
 		return null;
 	}
 	

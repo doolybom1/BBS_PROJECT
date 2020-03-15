@@ -27,6 +27,13 @@ $(function() {
 		toolbar:toolbar,
 		height:'200px',
 		disableDragAndDrop : false,
+		callbacks : {
+			onImageUpload : function(files, editor, isEdit){
+				for(let i = files.length - 1; i >= 0; i--){
+					upFile(files[i],this)
+				}
+			}
+		}
 	}) // end summernote
 	
 	// 이미지 업로드 부분 아직 안함
@@ -56,6 +63,28 @@ $(function() {
 		}
 	})
 	
+	<!-- ---------------------------------- -->
+	function upFile(file, editor){
+		var formData = new FormData()
+		
+		formData.append('upFile', file)
+		$.ajax({
+			url : "${rootPath}/image_up",
+			type : "POST",
+			data : formData,
+			contentType : false,
+			processData : false,
+			enctype : "multipart/form-data",
+			success : function(result){
+				alert(result)
+				result = "${rootPath}/files/" + result    // files ?
+				$(editor).summernote('editor.insertImage', result)
+			},
+			error : function(){
+				alert("서버통신오류")
+			}
+		})		
+	}
 		
 
 })

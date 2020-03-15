@@ -32,13 +32,31 @@ $(function() {
 	// 이미지 업로드 부분 아직 안함
 	
 	$(document).on("click","button",function(){
-			let txt = $(this).text()
-			if(txt ==  '삭제'){
-				if(confirm("삭제하시겠습니까?")){
-					document.location.href = "${rootPath}/delete?b_id=${BBS.b_id}"				
-				}
+		let txt = $(this).text()
+		if(txt ==  '삭제'){
+			if(confirm("삭제하시겠습니까?")){
+				document.location.href = "${rootPath}/delete?b_id=${BBS.b_id}"				
 			}
-		})
+		}
+	})
+	
+	$(".btn_save").click(function() {
+		let name = $("#b_writer")
+		if(name.val() == ""){
+			alert("작성자를 입력해주세요")
+			name.focus()	
+			return false;
+		}
+		
+		let subject = $("#b_subject")
+		if(subject.val() == ""){
+			alert("제목을 입력해주세요")
+			subject.focus()	
+			return false;
+		}
+	})
+	
+		
 
 })
 </script>
@@ -49,10 +67,10 @@ $(function() {
 		<fieldset>
 			<form method="POST">
 				<div class="form-group">
-					<input name="b_writer" class="form-control" placeholder="작성자" value="${BBS.b_writer}" />
+					<input name="b_writer" id="b_writer" class="form-control" placeholder="작성자" value="${BBS.b_writer}" />
 				</div>			
 				<div class="form-group">
-					<input name="b_subject" class="form-control" placeholder="제목" value="${BBS.b_subject}" />
+					<input name="b_subject" id="b_subject" class="form-control" placeholder="제목" value="${BBS.b_subject}" />
 				</div>			
 				<div class="form-group">
 					<textarea name="b_content" id="b_content" rows="5" cols="30">${BBS.b_content}</textarea>
@@ -60,7 +78,7 @@ $(function() {
 				<div class="form-group d-flex justify-content-end">
 					<c:choose>
 						<c:when test="${INSERT == 'INSERT'}">
-							<button class="btn btn-outline-success mr-1">저장</button>
+							<button class="btn btn-outline-success mr-1 btn_save">저장</button>
 							<a href="${rootPath}/list"><button type="button" class="btn btn-outline-dark">목록으로</button></a>
 						</c:when>
 						<c:otherwise>

@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartResolver;
 
 import com.dooly.bbs.domain.BBsVO;
 import com.dooly.bbs.service.BBsService;
@@ -69,6 +72,12 @@ public class BBsController {
 	public String delete(@RequestParam("b_id") String b_id) {
 		bbsService.delete(Long.valueOf(b_id));
 		return "redirect:/list";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/image_up",method=RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	public String fileUp(MultipartFile upFile) {
+		return null;
 	}
 	
 }

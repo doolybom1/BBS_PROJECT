@@ -15,6 +15,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/js/**" location="/js/" />
+	<resources mapping="/files/**" location="file:///Users/doolybom1/files/,/files/"/>
 	
 	<beans:bean id="filePath" class="java.lang.String">
 		<beans:constructor-arg value="/Users/doolybom1/files/"/>

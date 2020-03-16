@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartResolver;
 
 import com.dooly.bbs.domain.BBsVO;
 import com.dooly.bbs.service.BBsService;
+import com.dooly.bbs.service.FileService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +24,9 @@ public class BBsController {
 
 	@Autowired
 	private BBsService bbsService;
+	
+	@Autowired
+	private FileService fService;
 	
 	
 	@RequestMapping(value = "/list",method=RequestMethod.GET)
@@ -77,9 +81,12 @@ public class BBsController {
 	@ResponseBody
 	@RequestMapping(value = "/image_up",method=RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	public String fileUp(MultipartFile upFile) {
-		
-		
-		return null;
+		log.debug("업로드된 파일정보:" + upFile.getOriginalFilename());
+		String retFileName = fService.fileUp(upFile);
+		if(retFileName == null) {
+			return "FAIL";
+		}
+		return retFileName;
 	}
 	
 }

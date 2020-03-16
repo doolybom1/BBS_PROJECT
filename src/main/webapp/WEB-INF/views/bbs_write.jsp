@@ -77,7 +77,7 @@ $(function() {
 			enctype : "multipart/form-data",
 			success : function(result){
 				alert(result)
-				result = "${rootPath}/files/" + result    // files ?
+				result = "${rootPath}/files/" + result 
 				$(editor).summernote('editor.insertImage', result)
 			},
 			error : function(){

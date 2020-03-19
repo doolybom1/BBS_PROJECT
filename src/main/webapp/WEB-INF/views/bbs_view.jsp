@@ -65,7 +65,7 @@ $(function(){
 		<a href="${rootPath}/list"><button class="btn btn-outline-dark p-2">목록으로</button></a>
 	</div>
 	<section class="container-fluid p-3">
-		<div class="p-3">댓글을 남겨주세요</div>
+		<div class="p-3 h3">댓글을 남겨주세요</div>
 		<form class="main">
 			<div class="row p-3 bg-light">
 				<input type="hidden" name="c_id" id="c_id" value="0">
@@ -81,8 +81,8 @@ $(function(){
 				</div>
 			</div>
 		</form>	
-		<div class="p-3">댓글 리스트</div>
-		<div class="row p-3">
+		<div class="p-3 h3">댓글 리스트</div>
+		<div class="row pl-4">
 			<label class="col-2"><b>작성자</b></label>
 			<label class="col-8"><b>댓글</b></label>
 		</div>

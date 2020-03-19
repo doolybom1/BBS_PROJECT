@@ -37,9 +37,11 @@ $(function(){
 					alert("서버통신오류")
 				}
 			})
-			return true
+			return false
 		}
 	})
+	
+	
 })
 
 </script>

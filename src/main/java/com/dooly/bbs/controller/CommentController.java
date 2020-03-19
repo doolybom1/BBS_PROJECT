@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.dooly.bbs.domain.CommentVO;
 import com.dooly.bbs.service.CommentService;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequestMapping(value = "/comment")
 @Controller
 public class CommentController {

@@ -36,7 +36,7 @@ public class CommentServiceImp implements CommentService{
 
 	@Override
 	public List<CommentVO> findByBId(long c_b_id) {
-		return cmDao.findByBId(c_b_id);
+		return cmDao.findByBIdLevel(c_b_id);
 	}
 
 	@Override

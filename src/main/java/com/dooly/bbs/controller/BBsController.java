@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartResolver;
 
 import com.dooly.bbs.domain.BBsVO;
+import com.dooly.bbs.domain.CommentVO;
 import com.dooly.bbs.service.BBsService;
+import com.dooly.bbs.service.CommentService;
 import com.dooly.bbs.service.FileService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,9 @@ public class BBsController {
 	
 	@Autowired
 	private FileService fService;
+	
+	@Autowired
+	private CommentService cService;
 	
 	
 	@RequestMapping(value = "/list",method=RequestMethod.GET)
@@ -52,8 +56,13 @@ public class BBsController {
 	
 	@RequestMapping(value = "/detail",method=RequestMethod.GET)
 	public String detail(@RequestParam("b_id") String b_id, Model model) {
+		
+		long c_b_id = Long.valueOf(b_id);
 		BBsVO bbsVO = bbsService.findById(Long.valueOf(b_id));
+		List<CommentVO> cmtList = cService.findByBId(c_b_id);
+
 		model.addAttribute("BBS", bbsVO);
+		model.addAttribute("CMT_LIST", cmtList);
 		return "bbs_view";
 	}
 	
